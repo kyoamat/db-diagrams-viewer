@@ -116,3 +116,7 @@ const createMermaidSrc = (tables: Table[]) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+@import 'bulma/css/bulma.css';
+</style>
