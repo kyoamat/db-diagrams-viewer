@@ -54,9 +54,10 @@ const fetchTables = async (connStr: string) => {
   }
 
   const tables = showTablesRes[0].map((el) => Object.values(el)[0]) as string[]
+
   const result = [] as Table[]
   for (const table of tables) {
-    const showColumnsRes = (await client.query(`show columns from ${table};`)) as any[][] // quoteされると動作しないのでplaceholderは利用しない
+    const showColumnsRes = (await client.query(`show columns from \`${table}\`;`)) as any[][] // quoteされると動作しないのでplaceholderは利用しない
 
     const columns = [] as Column[]
     if (showColumnsRes.length > 1) {
